@@ -3,6 +3,12 @@ import sys
 IS_TEST = 'pytest' in sys.modules
 
 
+ACCESS_READ_ONLY = 'ro'
+ACCESS_READ_WRITE = 'rw'
+
+ROLE_ADMIN = 'admin'
+ROLE_SUBSCRIBER = 'subscriber'
+
 LICENSE_FREE = 'com.vedanamedia.familydiagram.free'
 LICENSE_BETA = 'com.vedanamedia.familydiagram.beta'
 LICENSE_ALPHA = 'com.vedanamedia.familydiagram.alpha'
@@ -54,3 +60,11 @@ def licenses_features(licenses):
     if ret == [LICENSE_CLIENT]: # Client is an add-on to the free license
         ret = [LICENSE_FREE, LICENSE_CLIENT]
     return ret
+
+
+def httpAuthHeader(user, signature):
+    return 'PKDiagram:%s:%s' % (user, signature)
+
+
+SERVER_API_VERSION = 'v1'
+
