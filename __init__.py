@@ -63,13 +63,11 @@ def licenses_features(licenses):
     return ret
 
 
-def httpAuthHeader(user, signature):
-    return 'PKDiagram:%s:%s' % (user, signature)
-
-
 SERVER_API_VERSION = 'v1'
 
 
+def httpAuthHeader(user, signature):
+    return 'PKDiagram:%s:%s' % (user, signature)
 
 
 def sign(secret, verb, content_md5, content_type, date, resource):
