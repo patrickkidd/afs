@@ -1,5 +1,9 @@
-import sys
+import sys, logging
 import hashlib, hmac, base64
+
+
+log = logging.getLogger(__name__)
+
 
 IS_TEST = 'pytest' in sys.modules
 
@@ -71,7 +75,7 @@ def httpAuthHeader(user, signature):
 
 
 def sign(secret, verb, content_md5, content_type, date, resource):
-    """ Just producce a signature. """
+    """ Just produce a signature. """
     canonical = '\n'.join((verb, content_md5, content_type, date, resource))
     h = hmac.new(secret, canonical.encode('utf-8'), hashlib.sha1)
     signature = base64.encodebytes(h.digest()).strip().decode('utf-8')
