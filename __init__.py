@@ -77,3 +77,6 @@ def sign(secret, verb, content_md5, content_type, date, resource):
     signature = base64.encodebytes(h.digest()).strip().decode('utf-8')
     # Debug(verb, content_md5, content_type, date, resource, signature)
     return signature
+
+ANON_SECRET = b'17754e81c5cd0adb73bbeffb064ccbc6'
+ANON_USER = 'anonymous'
