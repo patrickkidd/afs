@@ -44,7 +44,7 @@ jobs:
         path: dist/*.whl
 
     - run: |
-        mv dist/vedana-${{ env.version }}-py3-none-any.whl .
+        mv dist/*.whl .
         echo "WHEEL_FILENAME=`ls *.whl`" >> $GITHUB_ENV
 
     - name: Create Release
