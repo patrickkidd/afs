@@ -20,3 +20,5 @@ htmlcov
 .xcuserstate
 Makefile
 instance
+*.egg-info
+dist
