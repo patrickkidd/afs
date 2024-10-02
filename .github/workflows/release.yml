@@ -5,7 +5,7 @@ name: Python package
 
 on:
   push:
-    branches: [ "ci-pipeline" ]
+    branches: [ "release" ]
 
 jobs:
   build:
@@ -30,7 +30,6 @@ jobs:
   
     - name: Increment version
       run: |
-        echo ">>>${{ env.version }}<<<"
         sed -i "s/version = \"[^\"]*\"/version = \"${{ env.version }}\"/" pyproject.toml
   
     - name: Build
