@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vedana"
+version = "1.0.0"
+description = "Public vedana shared headers"
+authors = [
+    { name="Patrick Stinson", email="patrick@alaskafamilysystems.com" }
+]
+
+[project.urls]
+repository = "https://github.com/patrickkidd/vedana"
+
+[tool.setuptools]
+packages = ["vedana"]
