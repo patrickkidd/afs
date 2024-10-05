@@ -11,6 +11,10 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    env:
+      TWINE_REPOSITORY_URL: "${{ secrets.TWINE_REPOSITORY_URL }}"
+      TWINE_USERNAME: "${{ secrets.TWINE_USERNAME }}"
+      TWINE_PASSWORD: "${{ secrets.TWINE_PASSWORD }}"
     
     steps:
     - uses: actions/checkout@v4
@@ -37,7 +41,7 @@ jobs:
         python -m build . --no-isolation
 
     - name: Upload artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: python-wheel
         path: dist/*.whl
@@ -66,3 +70,9 @@ jobs:
         asset_path: ${{ env.WHEEL_FILENAME }}
         asset_name: ${{ env.WHEEL_FILENAME }}
         asset_content_type: application/zip
+
+    - name: Push to pypi.familydiagram.com
+      run: |
+        pip install twine
+        twine upload --repository-url $TWINE_REPOSITORY_URL --username $TWINE_USERNAME --password $TWINE_PASSWORD *.whl
+  
